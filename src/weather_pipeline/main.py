@@ -6,6 +6,7 @@ from datetime import date, timedelta
 from weather_pipeline.config import load_settings
 from weather_pipeline.extract.weather_api import extract_all
 from weather_pipeline.logging_setup import setup_logging
+from weather_pipeline.transform.clean_weather import transform_all
 
 logger = logging.getLogger(__name__)
 
@@ -37,6 +38,7 @@ def main():
     logger.info("Pipeline started: %s to %s", args.start, args.end)
     try:
         extract_all(settings, args.start, args.end)
+        transform_all(settings, args.start, args.end)
     except Exception:
         logger.exception("Pipeline failed")
         sys.exit(1)

@@ -70,7 +70,10 @@ def fetch_daily_weather(
 
 def raw_path(settings: Settings, location: Location, start: date, end: date) -> Path:
     return (
-        settings.raw_dir / "open_meteo" / f"{start}_{end}" / f"{location.city.lower()}.json"
+        settings.raw_dir
+        / "open_meteo"
+        / f"{start}_{end}"
+        / f"{location.city.lower()}.json"
     )
 
 
@@ -92,7 +95,7 @@ def save_raw(
 
     tmp_path = path.with_suffix(".tmp")  # write to a temp file first...
     tmp_path.write_text(json.dumps(record, indent=2), encoding="utf-8")
-    tmp_path.replace(path)  # ...then swap it in, so no half-written files
+    tmp_path.replace(path)
     return path
 
 
