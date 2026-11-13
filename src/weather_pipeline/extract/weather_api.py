@@ -70,7 +70,7 @@ def fetch_daily_weather(
 
 def raw_path(settings: Settings, location: Location, start: date, end: date) -> Path:
     return (
-        settings.raw_dir / "open_meteo" / f"{start}_{end}" / f"{location.city.lower()}"
+        settings.raw_dir / "open_meteo" / f"{start}_{end}" / f"{location.city.lower()}.json"
     )
 
 
