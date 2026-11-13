@@ -1,10 +1,13 @@
-from pathlib import Path
 from dataclasses import dataclass
+from pathlib import Path
 
 import yaml
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2] # Go 2 steps further to get to the root folder of the file
-CONFIG_FILE = PROJECT_ROOT/ "config" / "settings.yaml"
+PROJECT_ROOT = (
+    Path(__file__).resolve().parents[2]
+)  # Go 2 steps further to get to the root folder of the file
+CONFIG_FILE = PROJECT_ROOT / "config" / "settings.yaml"
+
 
 @dataclass(frozen=True)
 class Location:
@@ -27,11 +30,12 @@ class Settings:
     log_dir: Path
     max_bad_ratio: float
 
+
 def load_settings(config_file: Path = CONFIG_FILE) -> Settings:
     if not config_file.exists():
         raise FileNotFoundError(f"Config file cant be found: {config_file}")
 
-    with open(config_file, encoding= "utf-8") as f:
+    with open(config_file, encoding="utf-8") as f:
         cfg = yaml.safe_load(f)
 
     api, paths = cfg["api"], cfg["paths"]

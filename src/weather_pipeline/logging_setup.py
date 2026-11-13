@@ -10,7 +10,7 @@ DATE_FORMAT = "%Y-%m-%d %H:%M:%S"
 
 def setup_logging(log_dir: Path) -> None:
     root = logging.getLogger()
-    if root.handlers:          # already configured: don't add duplicate handlers
+    if root.handlers:  # already configured: don't add duplicate handlers
         return
 
     log_dir.mkdir(parents=True, exist_ok=True)
@@ -18,13 +18,13 @@ def setup_logging(log_dir: Path) -> None:
     formatter = logging.Formatter(FORMAT, DATE_FORMAT)
 
     console = logging.StreamHandler()
-    console.setLevel(logging.INFO)            # terminal: INFO and up
+    console.setLevel(logging.INFO)  # terminal: INFO and up
     console.setFormatter(formatter)
 
     file_handler = RotatingFileHandler(
         log_dir / "pipeline.log", maxBytes=1_000_000, backupCount=3, encoding="utf-8"
     )
-    file_handler.setLevel(logging.DEBUG)      # file: everything
+    file_handler.setLevel(logging.DEBUG)  # file: everything
     file_handler.setFormatter(formatter)
 
     root.addHandler(console)
