@@ -37,12 +37,6 @@ I framed the project around an imaginary company that runs outdoor events and wa
 4. Does it rain more often on weekends than on weekdays?
 5. What is the most common type of weather in each state?
 
-Each question has its own query in `sql/reports/`. Here's question 4 on real data
-(2025-01-01 to 2026-10-31, <N> rows):
-
-```
-<paste the real output of `uv run weather-report` for Q4 here>
-```
 
 ## The data model
 
