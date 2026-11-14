@@ -1,6 +1,6 @@
 # Weather Pipeline
 
-I wanted my practicing data engineering project to use real data, run end to end, and be safe to
+I wanted this practicing data engineering project to use real data, run end to end, and be safe to
 re-run as many times as I liked. This is the result: a small batch pipeline that pulls daily
 weather for five Australian capital cities from the free [Open-Meteo](https://open-meteo.com/)
 archive API, checks it, and loads it into a star schema I can query with SQL.
@@ -91,7 +91,7 @@ A few details that shaped the queries:
 You'll need [uv](https://docs.astral.sh/uv/).
 
 ```bash
-git clone https://github.com/<your-username>/weather-pipeline.git
+git clone https://github.com/sagameko/weather-pipeline.git
 cd weather-pipeline
 uv sync
 
@@ -160,5 +160,5 @@ src/weather_pipeline/
     utils/                date and seed helpers
     main.py               runs the pipeline
     reports.py            prints the reports
-tests/                    pytest suite (<number> tests)
+tests/                    pytest suite (10 tests)
 ```

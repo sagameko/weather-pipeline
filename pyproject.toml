@@ -1,7 +1,7 @@
 [project]
 name = "weather-pipeline"
 version = "0.1.0"
-description = "Daily weather ETL pipeline for Melbourne | Sydney | Perth"
+description = "Daily weather ETL pipeline for Melbourne | Sydney | Perth | Brisbane | Adelaide"
 readme = "README.md"
 authors = [
     { name = "Jack Nguyen", email = "sagameko@gmail.com" }
