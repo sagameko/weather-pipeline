@@ -1,10 +1,9 @@
-import csv
 import logging
 import sqlite3
 from datetime import date, timedelta
-from pathlib import Path
 
 from weather_pipeline.config import PROJECT_ROOT, Location
+from weather_pipeline.utils.seeds import read_weather_codes
 
 logger = logging.getLogger(__name__)
 WEATHER_CODE_SEEDS = PROJECT_ROOT / "seeds" / "weather_code.csv"
@@ -27,15 +26,9 @@ def load_dim_location(con: sqlite3.Connection, locations: list[Location]) -> int
     return len(rows)
 
 
-def load_dim_weather_code(
-    con: sqlite3.Connection, seed_file: Path = WEATHER_CODE_SEEDS
-) -> int:
+def load_dim_weather_code(con: sqlite3.Connection) -> int:
     """Load the WMO weather code lookup from the seed CSV."""
-    with open(seed_file, newline="", encoding="utf-8") as f:
-        rows = [
-            (int(r["weather_code"]), r["description"], r["category"])
-            for r in csv.DictReader(f)
-        ]
+    rows = read_weather_codes()
     con.executemany(
         """
         INSERT INTO dim_weather_code (weather_code, description, category)
