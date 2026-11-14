@@ -15,6 +15,7 @@ dependencies = [
 
 [project.scripts]
 weather-pipeline = "weather_pipeline.main:main"
+weather-report = "weather_pipeline.reports:main"
 
 [build-system]
 requires = ["uv_build>=0.11.16,<0.12.0"]
